@@ -9,7 +9,8 @@ from .models import (Author,
 class BookInstanceInLine(admin.TabularInline):
     model = BookInstance
     extra = 0  # išjungia placeholder'ius
-
+    can_delete = False
+    readonly_fields = ("uuid",)
 
 class BookAdmin(admin.ModelAdmin):
     list_display = ('title', 'isbn', 'author', 'display_genre')
