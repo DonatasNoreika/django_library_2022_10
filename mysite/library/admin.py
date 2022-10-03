@@ -6,9 +6,14 @@ from .models import (Author,
 
 # Register your models here.
 
+class BookInstanceInLine(admin.TabularInline):
+    model = BookInstance
+    extra = 0  # išjungia placeholder'ius
+
 
 class BookAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'isbn', 'author', 'display_genre')
+    list_display = ('title', 'isbn', 'author', 'display_genre')
+    inlines = [BookInstanceInLine]
 
 
 class BookInstanceAdmin(admin.ModelAdmin):
