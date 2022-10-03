@@ -36,6 +36,14 @@ class Book(models.Model):
     def __str__(self):
         return f"{self.author} - {self.title}"
 
+    def display_genre(self):
+        genres = self.genre.all()
+        genre_names = list(genre.name for genre in genres)
+        genres_str = ", ".join(genre_names)
+        return genres_str
+
+    display_genre.short_description = "Žanras"
+
     class Meta:
         verbose_name = 'Knyga'
         verbose_name_plural = 'Knygos'
