@@ -8,6 +8,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <!-- Add additional CSS in static file -->
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
 
@@ -37,6 +40,12 @@
     </div>
   </div>
 </nav>
+
+<!--        <ul class="sidebar-nav">-->
+<!--          <li><a href="{% url 'index' %}">Pradžia</a></li>-->
+<!--          <li><a href="">Visos knygos</a></li>-->
+<!--          <li><a href="">Visi autoriai</a></li>-->
+<!--        </ul>-->
 
 <div class="jumbotron text-center">
   <h1>Sveiki,</h1>
