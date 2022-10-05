@@ -9,4 +9,10 @@
 <p>ISBN: <strong> {{ book.isbn }} </strong></p>
 <p>Žanras: <strong> {{ book.display_genre }} </strong></p>
 <p>Aprašymas: {{ book.summary }} </p>
+<h5>Knygos egzemplioriai:</h5>
+<ul>
+    {% for instance in book.instances.all %}
+        <li class="{% if instance.status == 'g' %}text-success{% elif instance.status == 'p' %}text-danger{% else %}text-warning{% endif %}">{{ instance.uuid }}, {{ instance.get_status_display }} ({{ instance.due_back }})</li>
+    {% endfor %}
+</ul>
 {% endblock %}
