@@ -8,9 +8,9 @@
 <p>Pavardė: <strong> {{ single_author.last_name }} </strong></p>
 <p>Aprašymas: {{ single_author.description }} </p>
 <h5>Autoriaus knygos:</h5>
-<ol>
+<ul>
 {% for book in single_author.books.all %}
     <li>{{ book }}</li>
 {% endfor %}
-</ol>
+</ul>
 {% endblock %}
