@@ -17,6 +17,7 @@ class Genre(models.Model):
 class Author(models.Model):
     first_name = models.CharField("Vardas", max_length=100)
     last_name = models.CharField("Pavardė", max_length=100)
+    description = models.TextField("Aprašymas", max_length=2000, default="")
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
