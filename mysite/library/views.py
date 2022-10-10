@@ -3,6 +3,8 @@ from .models import Book, BookInstance, Author
 from django.views import generic
 from django.core.paginator import Paginator
 from django.db.models import Q
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 # Create your views here.
 def index(request):
@@ -62,3 +64,13 @@ class BookDetailView(generic.DetailView):
     model = Book
     template_name = 'book.html'
     context_object_name = 'book'
+
+
+class UserBookInstanceListView(generic.ListView, LoginRequiredMixin):
+    model = BookInstance
+    template_name = 'user_books.html'
+    context_object_name = 'instances'
+    paginate_by = 5
+
+    def get_queryset(self):
+        return BookInstance.objects.filter(reader=self.request.user)

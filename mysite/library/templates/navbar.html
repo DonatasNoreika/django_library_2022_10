@@ -27,6 +27,9 @@
               </svg>
         {{ user.get_username }}</a></li>
         <li class="nav-item"><a class="nav-link" href="{% url 'logout'%}?next=/library">Atsijungti</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'userbooks'%}">Mano knygos</a></li>
+
+
       {% else %}
         <li class="nav-item"><a class="nav-link" href="{% url 'login'%}?next={{request.path}}">Prisijungti</a></li>
         <li class="nav-item"><a class="nav-link" href="">Registruotis</a></li>
