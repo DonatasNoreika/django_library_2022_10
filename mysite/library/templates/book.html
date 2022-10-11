@@ -23,6 +23,16 @@
 </ul>
 <br>
 <h5>Atsiliepimai:</h5>
+  {% if user.is_authenticated %}
+    <div class="fieldWrapper">
+        <hr><br/>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.content }}
+            <input type="submit" value="Pateikti">
+        </form>
+    </div>
+  {% endif %}
 {% if book.bookreview_set.all %}
  {% for review in book.bookreview_set.all %}
     <hr>
