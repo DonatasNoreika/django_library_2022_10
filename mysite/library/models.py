@@ -85,3 +85,10 @@ class BookInstance(models.Model):
         verbose_name = 'Knygos egzempliorius'
         verbose_name_plural = 'Knygų egzemplioriai'
         ordering = ['-due_back']
+
+
+class BookReview(models.Model):
+    book = models.ForeignKey('Book', on_delete=models.SET_NULL, null=True, blank=True)
+    reviewer = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    date_created = models.DateTimeField("Data", auto_now_add=True)
+    content = models.TextField("Atsiliepimas", max_length=2000)

@@ -21,4 +21,13 @@
         <li class="{% if instance.status == 'g' %}text-success{% elif instance.status == 'p' %}text-danger{% else %}text-warning{% endif %}">{{ instance.uuid }}, {{ instance.get_status_display }} ({{ instance.due_back }})</li>
     {% endfor %}
 </ul>
+<br>
+<h5>Atsiliepimai:</h5>
+{% if book.bookreview_set.all %}
+ {% for review in book.bookreview_set.all %}
+    <hr>
+    <strong>{{ review.reviewer }}</strong>, <em>{{ review.date_created }}</em>
+      <p>{{ review.content }}</p>
+    {% endfor %}
+{% endif %}
 {% endblock %}
