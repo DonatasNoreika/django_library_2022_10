@@ -3,7 +3,8 @@ from .models import (Author,
                      BookInstance,
                      Book,
                      Genre,
-                     BookReview)
+                     BookReview,
+                     Profile)
 
 # Register your models here.
 
@@ -41,3 +42,4 @@ admin.site.register(Book, BookAdmin)
 admin.site.register(BookInstance, BookInstanceAdmin)
 admin.site.register(Genre)
 admin.site.register(BookReview, BookReviewAdmin)
+admin.site.register(Profile)
