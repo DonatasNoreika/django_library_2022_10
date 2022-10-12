@@ -92,3 +92,9 @@ class BookReview(models.Model):
     reviewer = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     date_created = models.DateTimeField("Data", auto_now_add=True)
     content = models.TextField("Atsiliepimas", max_length=2000)
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    nuotrauka = models.ImageField(default='default.png', upload_to="profile_pics")
+

@@ -83,6 +83,9 @@ def search(request):
     return render(request, 'search.html', context=context)
 
 
+def profile(request):
+    return render(request, 'profile.html')
+
 class BookListView(generic.ListView):
     model = Book
     template_name = 'books.html'
