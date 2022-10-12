@@ -9,7 +9,7 @@ from django.contrib import messages
 from django.shortcuts import redirect
 from django.contrib.auth.forms import User
 from django.views.generic.edit import FormMixin
-from .forms import BookReviewForm
+from .forms import BookReviewForm, UserUpdateForm, ProfileUpdateForm
 
 @csrf_protect
 def register(request):
@@ -84,7 +84,19 @@ def search(request):
 
 
 def profile(request):
-    return render(request, 'profile.html')
+    if request.method == "POST":
+        u_form = UserUpdateForm(request.POST, instance=request.user)
+        p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            messages.info(request, "Profilis atnaujintas")
+            return redirect('profile')
+    context = {
+        'u_form': UserUpdateForm(instance=request.user),
+        'p_form': ProfileUpdateForm(instance=request.user.profile),
+    }
+    return render(request, 'profile.html', context=context)
 
 class BookListView(generic.ListView):
     model = Book
