@@ -140,3 +140,8 @@ class UserBookInstanceListView(generic.ListView, LoginRequiredMixin):
         return BookInstance.objects.filter(reader=self.request.user)
 
 
+class UserBookInstanceDetailView(generic.DetailView, LoginRequiredMixin):
+    model = BookInstance
+    template_name = 'user_book.html'
+    context_object_name = 'instance'
+

@@ -8,7 +8,7 @@
 {% if instances %}
 <ul>
 {% for book in instances %}
-    <a href="{% url 'book' book.book.id %}">
+    <a href="{{ book.id }}">
         <li class="{% if book.is_overdue %}text-danger{% endif %}">{{ book }}</li>
     </a>
 {% endfor %}
