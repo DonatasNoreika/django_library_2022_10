@@ -10,6 +10,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.forms import User
 from django.views.generic.edit import FormMixin
 from .forms import BookReviewForm, UserUpdateForm, ProfileUpdateForm
+from django.contrib.auth.mixins import UserPassesTestMixin
 
 @csrf_protect
 def register(request):
@@ -156,3 +157,20 @@ class UserBookInstanceCreateView(generic.CreateView, LoginRequiredMixin):
         form.instance.reader = self.request.user
         form.save()
         return super().form_valid(form)
+
+
+class UserBookInstanceUpdateView(generic.UpdateView, LoginRequiredMixin, UserPassesTestMixin):
+    model = BookInstance
+    fields = ['book', 'due_back']
+    success_url = '/library/userbooks/'
+    template_name = 'userbook_form.html'
+
+    def form_valid(self, form):
+        form.instance.reader = self.request.user
+        form.save()
+        return super().form_valid(form)
+
+    def test_func(self):
+        book_instance = self.get_object()
+        return book_instance.reader == self.request.user
+

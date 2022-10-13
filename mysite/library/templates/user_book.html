@@ -8,6 +8,9 @@
     <img src="{{ instance.book.cover.url }}">
     <br>
     <br>
-    <p><strong class="{% if object.is_overdue %}text-danger{% endif %}">Pavadinimas: {{instance.book.title}} ({{ instance.due_back }}) </strong></p>
+    <p><strong class="{% if instance.is_overdue %}text-danger{% endif %}">Pavadinimas: {{instance.book.title}} ({{ instance.due_back }}) </strong></p>
     <p><strong >UUID: {{ instance.uuid }} </strong></p>
+    {% if object.reader == user %}
+        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'update_instance' instance.id %}">Redaguoti</a>
+    {% endif %}
 {% endblock %}
