@@ -1,4 +1,4 @@
-from .models import BookReview, User, Profile
+from .models import BookReview, User, Profile, BookInstance
 from django import forms
 
 
@@ -18,3 +18,12 @@ class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['nuotrauka']
+
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+class UserBookInstanceCreateForm(forms.ModelForm):
+    class Meta:
+        model = BookInstance
+        fields = ['book', 'due_back', 'reader']
+        widgets = {'reader': forms.HiddenInput(), 'due_back': DateInput()}
