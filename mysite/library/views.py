@@ -156,6 +156,7 @@ class UserBookInstanceCreateView(generic.CreateView, LoginRequiredMixin):
 
     def form_valid(self, form):
         form.instance.reader = self.request.user
+        form.instance.status = 'p'
         form.save()
         return super().form_valid(form)
 
