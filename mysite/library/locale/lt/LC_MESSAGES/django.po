@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-14 11:18+0300\n"
-"PO-Revision-Date: 2022-10-14 11:20+0300\n"
+"POT-Creation-Date: 2022-10-14 11:33+0300\n"
+"PO-Revision-Date: 2022-10-14 11:34+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: lt\n"
@@ -20,34 +20,66 @@ msgstr ""
 "1 : n % 1 != 0 ? 2: 3);\n"
 "X-Generator: Poedit 3.1.1\n"
 
-#: .\library\templates\index.html:7
-msgid "Local library"
-msgstr "Local library"
+#: .\models.py:17
+msgid "Genre"
+msgstr "Žanras"
 
-#: .\library\templates\index.html:8
-msgid "Welcome to my Library"
-msgstr "Sveiki atvykę į knygų rojų"
+#: .\models.py:18
+msgid "Genres"
+msgstr "Žanrai"
 
-#: .\library\templates\index.html:9
-msgid "Today we have:"
-msgstr "Šiandien turime:"
+#: .\models.py:39
+msgid "Author"
+msgstr "Autoriai"
 
-#: .\library\templates\index.html:11
-msgid "Books"
-msgstr "Knygos"
-
-#: .\library\templates\index.html:12
-msgid "Book Instances"
-msgstr "Knygų egzemplioriai"
-
-#: .\library\templates\index.html:13
-msgid "Now Available"
-msgstr "Šiandien prieinama"
-
-#: .\library\templates\index.html:14
+#: .\models.py:40 .\templates\index.html:14
 msgid "Authors"
 msgstr "Autoriai"
 
-#: .\library\templates\index.html:16
+#: .\models.py:45
+msgid "Title"
+msgstr "Pavadinimas"
+
+#: .\models.py:46
+msgid "Summary"
+msgstr "Aprašymas"
+
+#: .\models.py:50
+msgid "Cover"
+msgstr "Viršelis"
+
+#: .\models.py:64 .\models.py:65
+msgid "Book"
+msgstr "Knyga"
+
+#: .\models.py:87
+msgid "Book Instance"
+msgstr "Knygų egzemplioriai"
+
+#: .\models.py:88 .\templates\index.html:12
+msgid "Book Instances"
+msgstr "Knygų egzemplioriai"
+
+#: .\templates\index.html:7
+msgid "Local library"
+msgstr "Local library"
+
+#: .\templates\index.html:8
+msgid "Welcome to my Library"
+msgstr "Sveiki atvykę į knygų rojų"
+
+#: .\templates\index.html:9
+msgid "Today we have:"
+msgstr "Šiandien turime:"
+
+#: .\templates\index.html:11
+msgid "Books"
+msgstr "Knygos"
+
+#: .\templates\index.html:13
+msgid "Now Available"
+msgstr "Šiandien prieinama"
+
+#: .\templates\index.html:16
 msgid "Your visits"
 msgstr "Jūsų apsilankymai"

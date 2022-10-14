@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from datetime import date
 from tinymce.models import HTMLField
 from PIL import Image
+from django.utils.translation import gettext_lazy as _
 # Create your models here.
 
 class Genre(models.Model):
@@ -13,8 +14,8 @@ class Genre(models.Model):
         return f"{self.name}"
 
     class Meta:
-        verbose_name = 'Žanras'
-        verbose_name_plural = 'Žanrai'
+        verbose_name = _('Genre')
+        verbose_name_plural = _('Genres')
 
 
 class Author(models.Model):
@@ -35,18 +36,18 @@ class Author(models.Model):
     display_books.short_description = "Knygos"
 
     class Meta:
-        verbose_name = 'Autorius'
-        verbose_name_plural = 'Autoriai'
+        verbose_name = _('Author')
+        verbose_name_plural = _('Authors')
         ordering = ['id']
 
 
 class Book(models.Model):
-    title = models.CharField("Pavadinimas", max_length=200)
-    summary = models.TextField("Aprašymas", max_length=1000, help_text='Trumpas knygos aprašymas')
+    title = models.CharField(_("Title"), max_length=200)
+    summary = models.TextField(_("Summary"), max_length=1000, help_text='Trumpas knygos aprašymas')
     isbn = models.CharField("ISBN", max_length=13, help_text='13 Simbolių <a href="https://www.isbn-international.org/content/what-isbn">ISBN kodas</a>')
     author = models.ForeignKey("Author", on_delete=models.SET_NULL, null=True, related_name="books")
     genre = models.ManyToManyField("Genre", help_text='Išrinkite žanrą(us) šiai knygai')
-    cover = models.ImageField("Viršelis", upload_to='covers', null=True)
+    cover = models.ImageField(_("Cover"), upload_to='covers', null=True)
 
     def __str__(self):
         return f"{self.author} - {self.title}"
@@ -60,8 +61,8 @@ class Book(models.Model):
     display_genre.short_description = "Žanras"
 
     class Meta:
-        verbose_name = 'Knyga'
-        verbose_name_plural = 'Knygos'
+        verbose_name = _('Book')
+        verbose_name_plural = _('Book')
         ordering = ['-id']
 
 class BookInstance(models.Model):
@@ -83,8 +84,8 @@ class BookInstance(models.Model):
         return f"{self.book} ({self.uuid}) - {self.status} ({self.due_back})"
 
     class Meta:
-        verbose_name = 'Knygos egzempliorius'
-        verbose_name_plural = 'Knygų egzemplioriai'
+        verbose_name = _('Book Instance')
+        verbose_name_plural = _('Book Instances')
         ordering = ['-due_back']
 
 
