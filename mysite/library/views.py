@@ -11,6 +11,7 @@ from django.contrib.auth.forms import User
 from django.views.generic.edit import FormMixin
 from .forms import BookReviewForm, UserUpdateForm, ProfileUpdateForm, UserBookInstanceCreateForm
 from django.contrib.auth.mixins import UserPassesTestMixin
+from django.utils.translation import gettext as _
 
 @csrf_protect
 def register(request):
@@ -21,18 +22,22 @@ def register(request):
         password2 = request.POST['password2']
         if password == password2:
             if User.objects.filter(username=username).exists():
-                messages.error(request, f"Vartotojo vardas {username} užimtas!")
+                messages.error(request, _('Username %s already exists!') % username)
+                # messages.error(request, f"Vartotojo vardas {username} užimtas!")
                 return redirect('register')
             else:
                 if User.objects.filter(email=email).exists():
-                    messages.error(request, f'Vartotojas su el. pašto adresu {email} jau užregistruotas!')
+                    messages.error(request, _('Email %s already exists!') % email)
+                    # messages.error(request, f'Vartotojas su el. pašto adresu {email} jau užregistruotas!')
                     return redirect('register')
                 else:
                     User.objects.create_user(username=username, email=email, password=password)
-                    messages.info(request, f'Naujas vartotojas {username} registruotas!')
+                    messages.info(request, _('New user %s registered!') % username)
+                    # messages.info(request, f'Naujas vartotojas {username} registruotas!')
                     return redirect('login')
         else:
-            messages.error(request, 'Slaptažodžiai nesutampa')
+            # messages.error(request, 'Slaptažodžiai nesutampa')
+            messages.error(request, _('Passwords do not match!'))
             return redirect('register')
     return render(request, 'registration/register.html')
 
