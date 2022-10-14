@@ -4,6 +4,7 @@
 
 {% block content %}
 {% load static %}
+{% load i18n %}
 {% if book.cover %}
 <img src="{{ book.cover.url }}" style="width:300px" class="card-img-top" alt="...">
 {% else %}
