@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 import os
 from django.utils.translation import gettext_lazy as _
+from . import my_settings
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,21 +24,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-n!18-2kveo(@=%5ynl%ek&pzyw!6zkx(*vzdwq5-_unq*le45j'
+SECRET_KEY = my_settings.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_POST = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'mano_pastas@gmail.com'
-# el. pašto adresas iš kurio siųsite
-EMAIL_HOST_PASSWORD = 'VerySecret'
-# slaptažodis
+EMAIL_BACKEND = my_settings.EMAIL_BACKEND
+EMAIL_HOST = my_settings.EMAIL_HOST
+EMAIL_POST = my_settings.EMAIL_POST
+EMAIL_USE_TLS = my_settings.EMAIL_USE_TLS
+EMAIL_HOST_USER = my_settings.EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = my_settings.EMAIL_HOST_PASSWORD
 
 # Application definition
 
